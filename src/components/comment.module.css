@@ -1,0 +1,81 @@
+.comment {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.commentBox {
+    flex: 1;  /* eu uso quando eu tenho uma div em volta dessa que tem display flex, essa estilização esta me falando que esse elemento ira ocupar o maior espaço possivel do meu elemento pai que tem display flex */
+}
+
+.commentContent {
+    background-color: var(--gray-700);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.headerContent {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.authorAndTime strong{
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    
+}
+
+.authorAndTime time {
+    display: block;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--gray-400);
+}
+
+.btnDelete {
+    background: transparent;
+    border: none;
+    color: var(--gray-400);
+    cursor: pointer;
+    line-height: 0; /* para o quando eu passa rcom o TAB o meu focus ficar grudado ai icone */
+    border-radius: 2px;
+}
+
+.btnDelete:hover {
+    color: var(--red-500);
+}
+
+.paragrapContent {
+    margin-top: 1rem;
+    color: var(--gray-300);
+}
+
+.commentBoxFooter {
+    margin-top: 1rem;
+}
+
+.commentBoxFooterBtn {
+    background: transparent;
+    border: 0;
+    color: var(--gray-400);
+    cursor: pointer;
+
+    display: flex; 
+    align-items: center;
+    border-radius: 2px;
+}
+
+.commentBoxFooterBtn:hover {
+    color: var(--green-300);
+}
+
+.commentBoxFooterBtn svg {
+    margin-right: 0.75rem;
+}
+
+.commentBoxFooterBtn span::before {
+    content: "\2022";
+    padding: 0 0.25rem;
+}
