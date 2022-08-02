@@ -16,15 +16,16 @@
 
 .contentParagraph {
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
-.contentParagraph a {
+.contentLink {
     font-weight: bold;
     color: var(--green-500);
     text-decoration: none;
 }
 
-.contentParagraph a:hover {
+.contentLink:hover {
     color: var(--green-300);
 }
 
