@@ -21,8 +21,24 @@ export function Post({ author, publishedAt, content}) {
     }
 
     function handleNewCommentChange(event) {
+        event.target.setCustomValidity('') // eu tenho que lembrar de resetar a mensagem do required por conta dos bugs
         setNewCommentText(event.target.value)
     }
+
+    function handleNewCommentInvalid() {
+        event.target.setCustomValidity('Esse campo é obrigatório') // esse metodo do event é para customizar a mensagem do required
+    }
+
+    function deleteComment(commentToDelete) {
+        // imutabilidade => as variáveis não sofrem mutação, nós criamos um anovo valor (um novo espaço na memoria)
+        const commentsWithoutDeleteOne = comments.filter(comment => {
+            return comment !== commentToDelete
+        })
+
+        setComments(commentsWithoutDeleteOne)
+    }
+
+    const isNewCommentInputEmpty = newCommentText.length === 0
 
     return (
         <article className={styles.post}>
@@ -38,7 +54,8 @@ export function Post({ author, publishedAt, content}) {
                     </div>
                 </div>
 
-                <time className={styles.time}
+                <time 
+                className={styles.time}
                 title='' 
                 dateTime='2022-07-29 14:32:54'>
                     {/* {publishedDateFormatted} */}
@@ -67,17 +84,28 @@ export function Post({ author, publishedAt, content}) {
                     placeholder='Deixe um comentário'
                     value={newCommentText}
                     onChange={handleNewCommentChange}
+                    onInvalid={handleNewCommentInvalid} // é chamada sempre que o html indentificar que a gente tentou realizar um submit do formulario mas o texto é invalido
+                    required
                 />
 
                 <footer className={styles.commentFooter}>
-                    <button className={styles.btnForm} type='submit'>Publicar</button>
+                    <button 
+                    className={styles.btnForm} type='submit' disabled={isNewCommentInputEmpty}>
+                        Publicar
+                    </button>
                 </footer>
 
             </form>
 
             <div className={styles.commentList}>
                 {comments.map( comment => {
-                    return <Comment content={comment} /> 
+                    return (
+                        <Comment 
+                            key={comment} 
+                            content={comment}
+                            onDeleteComment={deleteComment} // boas praticas // quando eu passo funcões para um componente como propriedades que vão ser disparadas a partir de alguma ação que acontece, eu começo o nome da propriedade com ON
+                        /> 
+                    )
                 })}
             </div>
         </article>
