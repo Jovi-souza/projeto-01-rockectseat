@@ -19,7 +19,7 @@
 A finalidade do projeto foi aprensentar os fundamentos do ReactJs.
 </p>
 <p align="justify">
- Nesse projeto eu aprenddi conceitos como:
+ Nesse projeto eu aprenddi conceitos como: <br>
 - useState <br>
 - ciclo de vida de um estado <br>
 - componentização <br>
